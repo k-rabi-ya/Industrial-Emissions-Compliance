@@ -6,7 +6,10 @@ def load_data():
     data3 = pd.read_excel("data/ghgp_data_2022.xlsx", skiprows=3)
 
     data = pd.concat([data2, data3], ignore_index=True)
-
+    
     print("Data loaded successfully")
 
     return data
+
+if __name__ == "__main__":
+    load_data()
