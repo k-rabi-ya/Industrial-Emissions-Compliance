@@ -40,3 +40,11 @@ sns.countplot(x='AQI_Bucket', data=df)
 plt.title("AQI Bucket Distribution")
 plt.xticks(rotation=45)
 plt.show()
+
+# Correlation heatmap
+plt.figure(figsize=(12,8))
+correlation = df.corr(numeric_only=True)
+
+sns.heatmap(correlation, annot=True, cmap="coolwarm", fmt=".2f")
+plt.title("Feature Correlation Heatmap")
+plt.show()
