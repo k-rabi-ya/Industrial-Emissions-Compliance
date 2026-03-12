@@ -1,6 +1,8 @@
 from sklearn.metrics import confusion_matrix, classification_report
 from sklearn.model_selection import train_test_split
 import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
 from model_preparation import prepare_data
 from model_training import train_model
 
@@ -32,7 +34,7 @@ print("\n" + "="*50)
 print("SENSITIVITY & SPECIFICITY FOR EACH CLASS")
 print("="*50)
 
-classes = ['Unknown', 'Poor', 'Very Poor', 'Severe', 'Moderate', 'Satisfactory', 'Good']
+classes = ['Compliant (0)', 'Non-Compliant (1)']
 
 for i, class_name in enumerate(classes):
     TP = cm[i, i]
@@ -47,3 +49,18 @@ for i, class_name in enumerate(classes):
     print(f"  Sensitivity (Recall): {sensitivity:.4f}")
     print(f"  Specificity: {specificity:.4f}")
     print(f"  TP: {TP}, FN: {FN}, FP: {FP}, TN: {TN}")
+    
+# plotting confusion matrix heatmap
+
+plt.figure(figsize=(8, 6))
+
+sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', cbar=True, 
+            xticklabels=classes, yticklabels=classes)
+
+plt.title('Industrial Emissions Compliance: Confusion Matrix')
+plt.ylabel('Actual Regulatory Category')
+plt.xlabel('Predicted Regulatory Category')
+plt.tight_layout()
+
+plt.savefig('confusion_matrix.png')
+plt.show()
