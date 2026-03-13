@@ -1,30 +1,54 @@
 # Industrial Emissions Compliance
 
-This project trains a machine learning model to classify factory emission records as `Compliant` or `Non-Compliant` using greenhouse gas reporting data.
+SDG Goal: `SDG 13 Climate Action`
 
-## What It Does
+This is a small Streamlit project that checks whether a factory is `Compliant` or `Non-Compliant` based on simple greenhouse gas threshold values.
 
-- Combines 2022 and 2023 emissions datasets with historical 2020 and 2021 emissions features
-- Creates a binary compliance label using an industry-relative emissions threshold
-- Trains a `RandomForestClassifier` with grid search
-- Evaluates predictions with a confusion matrix, sensitivity, and specificity
-- Provides a Streamlit app for viewing the current model output
+## Project Description
 
-## Run
+The app classifies factory emission logs using basic rules for:
 
-Prepare the merged dataset:
+- `CO2`
+- `Methane (CH4)`
+- `Nitrous Oxide (N2O)`
+- `Total Direct Emissions`
 
-```powershell
-python data.py
-```
+It is designed as a simple beginner-friendly demo for climate compliance screening.
 
-Run evaluation:
+## Features
 
-```powershell
-python confusion_matrix.py
-```
+- Enter facility name, country, and reporting year
+- Input `CO2`, `CH4`, `N2O`, and total direct emissions
+- Check gas values against fixed threshold ranges
+- Show a final `Compliant` or `Non-Compliant` result
+- Display gas severity levels such as `Low`, `Moderate`, `High`, and `Very High`
+- Show simple audit-risk notes for suspicious reporting values
+- Download the result as a CSV file
 
-Run the Streamlit app:
+## Threshold Rules
+
+### CO2
+
+- Below `10,000` tons/year: Low
+- `10,000` to `99,999` tons/year: Moderate
+- `100,000` to `999,999` tons/year: High
+- `1,000,000` tons/year and above: Very High and non-compliant
+
+### Methane (CH4)
+
+- Below `100` tons/year: Low
+- `100` to `999` tons/year: Moderate
+- `1,000` to `9,999` tons/year: High
+- `10,000` tons/year and above: Very High and non-compliant
+
+### Nitrous Oxide (N2O)
+
+- Below `100` tons/year: Low
+- `100` to `999` tons/year: Moderate
+- `1,000` to `4,999` tons/year: High
+- `5,000` tons/year and above: Very High and non-compliant
+
+## Run the App
 
 ```powershell
 streamlit run app.py
@@ -32,8 +56,14 @@ streamlit run app.py
 
 ## Output
 
-The model reports:
+The app shows:
 
-- Confusion matrix
-- Sensitivity (recall)
-- Specificity for each class
+- Facility details
+- Compliance result
+- Gas-level summaries
+- Audit-risk notes
+- A downloadable CSV report
+
+## Note
+
+Some extra data-processing and model-training files are still present in the project folder, but the current app uses a simple rule-based approach instead of a trained machine learning model.
