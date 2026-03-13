@@ -3,7 +3,7 @@ from feature_selection import X_test, y_test
 from model_training import model, scaler
 
 # Scale test data
-X_test_scaled = scaler.fit_transform(X_test)
+X_test_scaled = scaler.transform(X_test)
 
 # Predict
 y_pred = model.predict(X_test_scaled)
