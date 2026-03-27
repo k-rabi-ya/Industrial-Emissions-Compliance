@@ -1,7 +1,6 @@
 # Industrial Emissions Compliance
 
 SDG Goal: `SDG 13 Climate Action`
-
 This is a small Streamlit project that checks whether a factory is `Compliant` or `Non-Compliant` based on simple greenhouse gas threshold values.
 
 ## Project Description
@@ -12,7 +11,6 @@ The app classifies factory emission logs using basic rules for:
 - `Methane (CH4)`
 - `Nitrous Oxide (N2O)`
 - `Total Direct Emissions`
-
 It is designed as a simple beginner-friendly demo for climate compliance screening.
 
 ## Features
@@ -56,14 +54,9 @@ streamlit run app.py
 
 ## Output
 
-The app shows:
-
+This app shows:
 - Facility details
 - Compliance result
 - Gas-level summaries
 - Audit-risk notes
 - A downloadable CSV report
-
-## Note
-
-Some extra data-processing and model-training files are still present in the project folder, but the current app uses a simple rule-based approach instead of a trained machine learning model.
